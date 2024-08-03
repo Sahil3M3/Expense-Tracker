@@ -12,14 +12,14 @@ function handleLogin(event)
         password:password,
     }
     console.log(user);
-    axios.post('http://localhost:5000/user/login',user)
+    axios.post('http://52.65.52.207:5000/user/login',user)
     .then(r=>{
         console.log(r.data.token);
        
         const div=document.getElementById('mydiv');
         div.innerText=r.data.msg;
         localStorage.setItem("jwt",r.data.token);
-       window.location.href="http://localhost:5000/expense.html";
+       window.location.href="http://52.65.52.207:5000/expense.html";
     })
     .catch(error=>{
        

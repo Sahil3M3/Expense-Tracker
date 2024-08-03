@@ -16,12 +16,12 @@ function handleSignUp(e)
         name:name
     }
     console.log(user);
-    axios.post("http://localhost:5000/user/signup",user)
+    axios.post("http://52.65.52.207:5000/user/signup",user)
     .then(r=>{
        console.log(r.data);
         const p=document.getElementById('p');
         p.innerText=r.data.message;
-       window.location.href="http://localhost:5000/login.html";
+       window.location.href="http://52.65.52.207:5000/login.html";
     })
     .catch(e=>{
         const p=document.getElementById('p');

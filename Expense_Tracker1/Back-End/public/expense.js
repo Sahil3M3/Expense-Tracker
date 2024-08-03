@@ -17,7 +17,7 @@ function handleSubmit(event)
 if(expenseId)
 {
   const token=localStorage.getItem("jwt")
-  axios.put(`http://localhost:5000/expense/${expenseId}`,expense,{headers:{"Authorization":token}})
+  axios.put(`http://52.65.52.207:5000/expense/${expenseId}`,expense,{headers:{"Authorization":token}})
   .then(r=>{
     window.location.reload();
   })
@@ -26,7 +26,7 @@ if(expenseId)
 else
 {
   const token=localStorage.getItem("jwt")
-  axios.post('http://localhost:5000/expense',expense,{headers:{"Authorization":token}})
+  axios.post('http://52.65.52.207:5000/expense',expense,{headers:{"Authorization":token}})
   .then(r=>{
     id=r.data.id;
     console.log(expenseAmount+"-"+Description+"-"+type+"-"+id);
@@ -44,7 +44,7 @@ let limit = localStorage.getItem("rowsPerPage") ? Number(localStorage.getItem("r
 document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem("jwt");
 
-  axios.get("http://localhost:5000/premium/check", { headers: { "Authorization": token } })
+  axios.get("http://52.65.52.207:5000/premium/check", { headers: { "Authorization": token } })
     .then(r => {
       // Set the dropdown to the saved limit value
       document.getElementById('rowsPerPage').value = limit;
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function fetchData(page, limit) {
   const token = localStorage.getItem("jwt");
 
-  axios.get(`http://localhost:5000/expense?page=${page}&limit=${limit}`, { headers: { "Authorization": token } })
+  axios.get(`http://52.65.52.207:5000/expense?page=${page}&limit=${limit}`, { headers: { "Authorization": token } })
     .then(r => {
       document.getElementById('addbtn').style.display = 'unset';
       document.getElementById('purchase').style.display = 'unset';
@@ -117,7 +117,7 @@ function addExpense(expenseAmount, Description, type, id) {
 
 function fetchDownload() {
   const token = localStorage.getItem("jwt");
-  axios.get('http://localhost:5000/expense/getdownload', { headers: { "Authorization": token } })
+  axios.get('http://52.65.52.207:5000/expense/getdownload', { headers: { "Authorization": token } })
     .then(r => {
       const ui2 = document.getElementById('ui2');
       ui2.innerHTML = ''; // Clear the history table before adding new data
@@ -144,7 +144,7 @@ function handleDelete(id)
 {
   console.log(id);
   const token=localStorage.getItem("jwt")
-axios.delete(`http://localhost:5000/expense/${id}`,{headers:{"Authorization":token}})
+axios.delete(`http://52.65.52.207:5000/expense/${id}`,{headers:{"Authorization":token}})
 .then(r=>{
   console.log(r);
 })
@@ -185,7 +185,7 @@ function handlePurchase(e)
     return;
     
 }
-axios.get('http://localhost:5000/premium/premiummembership',{headers:{Authorization:token}})
+axios.get('http://52.65.52.207:5000/premium/premiummembership',{headers:{Authorization:token}})
 .then(r=>{
 
   const orderid = r.data.order.id;
@@ -201,7 +201,7 @@ console.log("order id "+orderid);
               orderId: response.razorpay_order_id
             };
       
-            axios.post('http://localhost:5000/premium/premiummembership', payment, { headers: { Authorization: token } })
+            axios.post('http://52.65.52.207:5000/premium/premiummembership', payment, { headers: { Authorization: token } })
             .then(res => {
               alert("Payment successful!");
               window.location.reload();
@@ -210,7 +210,7 @@ console.log("order id "+orderid);
               console.error(err);
 
               payment.msg='failed'
-              axios.post('http://localhost:5000/premium/premiummembership', payment, { headers: { Authorization: token } })
+              axios.post('http://52.65.52.207:5000/premium/premiummembership', payment, { headers: { Authorization: token } })
               .then(res => {
                 alert("Payment was cancelled. Please try again.");
               })
@@ -229,7 +229,7 @@ console.log("order id "+orderid);
              
                 orderId: orderid
               };
-              axios.post('http://localhost:5000/premium/premiummembership', payment, { headers: { Authorization: token } })
+              axios.post('http://52.65.52.207:5000/premium/premiummembership', payment, { headers: { Authorization: token } })
               .then(res => {
                 alert("Payment was cancelled. Please try again.");
               })
@@ -259,7 +259,7 @@ function showLeaderboard(event)
   const token=localStorage.getItem("jwt")
   console.log("hiii in learder");
  
-  axios.get('http://localhost:5000/expense/board',{headers:{"Authorization":token}})
+  axios.get('http://52.65.52.207:5000/expense/board',{headers:{"Authorization":token}})
   .then(r=>{
 
 document.getElementById('leader').style.display='unset';
@@ -299,7 +299,7 @@ async function handleDownload(e) {
   try {
     const token = localStorage.getItem("jwt");
 
-    const response = await  axios.get('http://localhost:5000/expense/download', {
+    const response = await  axios.get('http://52.65.52.207:5000/expense/download', {
       headers: { "Authorization": token },
      
     });
