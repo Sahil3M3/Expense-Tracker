@@ -11,11 +11,11 @@ const p1=document.getElementById('p1').value;
 const p2=document.getElementById('p2').value;
 
 if (p1 === p2) {
-    axios.post(`http://52.65.52.207:5000/password/resetpassword/${token}`, { password: p1 })
+    axios.post(`http://52.65.52.207:80/password/resetpassword/${token}`, { password: p1 })
         .then(response => {
             if (response.status === 200) {
                 alert('Password reset successful');
-                window.location.href = 'http://52.65.52.207:5000/login.html';
+                window.location.href = 'http://52.65.52.207:80/login.html';
             } else {
                 document.getElementById("mydiv").innerText = response.data.message;
             }
