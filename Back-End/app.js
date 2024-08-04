@@ -22,7 +22,7 @@ const asscessLogStream=fs.createWriteStream(path.join(__dirname,'access.log'),
 {flag:'a'} )
 app.use(helmet());
 app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "script-src 'self' https://cdn.jsdelivr.net;");
+    res.setHeader("Content-Security-Policy", "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://checkout.razorpay.com;");
     next();
 });
 app.use(morgan('combined',{stream:asscessLogStream}));
