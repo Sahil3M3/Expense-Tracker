@@ -37,6 +37,8 @@ app.use('/', (req, res) => {
 
     // Remove query string from the URL
     const url = req.url.split('?')[0];
+    console.log("new req");
+    
     console.log(path.join(__dirname, `public${url}`));
 
     res.sendFile(path.join(__dirname, `public${url}`));
