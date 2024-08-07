@@ -17,7 +17,7 @@ function handleLogin(event)
         console.log(r.data.token);
        
         const div=document.getElementById('mydiv');
-        div.innerText=r.data.msg;
+        div.innerText=r.data.message;
         localStorage.setItem("jwt",r.data.token);
        window.location.href="http://52.65.52.207:80/expense.html";
     })
